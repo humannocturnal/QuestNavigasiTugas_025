@@ -1,15 +1,22 @@
 package com.example.questnavigasitugas_025.view
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -73,6 +80,32 @@ fun TampilData(navController: NavController) {
         ) {
             items(pesertaList) { p ->
                 PesertaCard(peserta = p)
+            }
+        }
+        Spacer(Modifier.height(12.dp))
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
+            OutlinedButton(
+                onClick = { navController.navigate("Home") },
+                shape = RoundedCornerShape(10.dp),
+                border = BorderStroke(2.dp, NeonBlue),
+                colors = ButtonDefaults.outlinedButtonColors(
+                    contentColor = NeonBlue
+                )
+            ) {
+                Text("Beranda")
+            }
+            Button(
+                onClick = { navController.navigate("Formulir") },
+                shape = RoundedCornerShape(10.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = NeonPurple
+                )
+            ) {
+                Text("Formulir")
             }
         }
     }
