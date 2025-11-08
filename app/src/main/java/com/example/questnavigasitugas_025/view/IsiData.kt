@@ -143,6 +143,24 @@ fun PesertaCard(peserta: Peserta) {
         }
     }
 }
+@Composable
+private fun TextRow(label: String, value: String) {
+    Row {
+        Text(
+            "$label: ",
+            style = MaterialTheme.typography.bodySmall.copy(
+                color = Color(0xFF9CA3AF),
+                fontWeight = FontWeight.SemiBold
+            )
+        )
+        Text(
+            value,
+            style = MaterialTheme.typography.bodySmall.copy(
+                color = Color(0xFFE5E7EB)
+            )
+        )
+    }
+}
 
 
 
