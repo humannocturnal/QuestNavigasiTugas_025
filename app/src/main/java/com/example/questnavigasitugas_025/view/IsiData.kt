@@ -124,10 +124,25 @@ fun PesertaCard(peserta: Peserta) {
             1.dp,
             Brush.horizontalGradient(listOf(NeonBlue, NeonPurple)))
     ) {
+        Column(Modifier.padding(16.dp)) {
 
+            // Nama
+            Text(
+                peserta.nama,
+                style = MaterialTheme.typography.titleMedium.copy(
+                    color = Color.White,
+                    fontWeight = FontWeight.SemiBold
+                )
+            )
+
+            Spacer(Modifier.height(8.dp))
+
+            TextRow(label = "Jenis Kelamin", value = peserta.jk)
+            TextRow(label = "Status", value = peserta.status)
+            TextRow(label = "Alamat", value = peserta.alamat)
+        }
     }
 }
-
 
 
 
