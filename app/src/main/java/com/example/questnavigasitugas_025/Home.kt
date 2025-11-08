@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -71,7 +72,26 @@ fun Home(navController: NavController){
                 ),
                 elevation = CardDefaults.cardElevation(12.dp)
             ) {
+                Column(
+                    modifier = Modifier.padding(20.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
 
+                    Box(
+                        modifier = Modifier
+                            .size(120.dp)
+                            .background(
+                                brush = Brush.radialGradient(
+                                    listOf(NeonPurple, Color.Transparent)
+                                ),
+                                shape = RoundedCornerShape(32.dp)
+                            ),
+                        contentAlignment = Alignment.Center
+                    ) {
+
+                        
+                    }
+                }
             }
 
         }
