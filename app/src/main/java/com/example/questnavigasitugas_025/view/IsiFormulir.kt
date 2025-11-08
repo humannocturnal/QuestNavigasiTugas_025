@@ -1,22 +1,39 @@
 package com.example.questnavigasitugas_025.view
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.selection.selectableGroup
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -69,8 +86,83 @@ fun Formulir(navController: NavController) {
                     color = Color(0xFF9CA3AF)
                 )
             )
+            Spacer(Modifier.height(16.dp))
 
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(22.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = Color(0xFF0F172A)
+                ),
+                elevation = CardDefaults.cardElevation(10.dp)
+            ) {
+                Column(
+                    modifier = Modifier.padding(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(14.dp)
+                ) {
 
+                    Column {
+                        Text(
+                            "Nama Lengkap",
+                            style = MaterialTheme.typography.titleSmall.copy(
+                                color = Color(0xFFE5E7EB),
+                                fontWeight = FontWeight.SemiBold
+                            )
+                        )
+                        OutlinedTextField(
+                            value = textNama,
+                            onValueChange = { textNama = it },
+                            placeholder = { Text("Isikan Nama Lengkap") },
+                            modifier = Modifier.fillMaxWidth(),
+                            textStyle = LocalTextStyle.current.copy(color = Color.White), // teks putih
+                            colors = OutlinedTextFieldDefaults.colors(
+                                focusedBorderColor = NeonPurple,
+                                unfocusedBorderColor = Color(0xFF374151),
+                                cursorColor = NeonPurple
+                            )
+                        )
+                    }
+
+                    Column {
+                        Text(
+                            "Jenis Kelamin",
+                            style = MaterialTheme.typography.titleSmall.copy(
+                                color = Color(0xFFE5E7EB),
+                                fontWeight = FontWeight.SemiBold
+                            )
+                        )
+                        Column(Modifier.selectableGroup()) {
+                            JK_Option.forEach { text ->
+                                Row(
+                                    Modifier
+                                        .fillMaxWidth()
+                                        .selectable(
+                                            selected = (text == selectedJK),
+                                            onClick = { selectedJK = text },
+                                            role = Role.RadioButton
+                                        )
+                                        .padding(vertical = 4.dp),
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    RadioButton(
+                                        selected = (text == selectedJK),
+                                        onClick = null,
+                                        colors = RadioButtonDefaults.colors(
+                                            selectedColor = NeonPurple
+                                        )
+                                    )
+                                    Text(
+                                        text = text,
+                                        modifier = Modifier.padding(start = 8.dp),
+                                        color = Color(0xFFE5E7EB)
+                                    )
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+            }
         }
     }
 }
