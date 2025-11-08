@@ -98,6 +98,17 @@ fun Home(navController: NavController){
                             contentScale = ContentScale.Crop
                         )
                     }
+
+                    Spacer(Modifier.height(16.dp))
+
+                    Text(
+                        text = "CodeCamp",
+                        style = MaterialTheme.typography.titleLarge.copy(
+                            color = Color.White,
+                            fontWeight = FontWeight.Bold
+                        )
+                    )
+
                 }
             }
 
