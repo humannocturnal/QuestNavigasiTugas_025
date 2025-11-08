@@ -197,8 +197,30 @@ fun Formulir(navController: NavController) {
                             }
                         }
                     }
+                    Column {
+                        Text(
+                            "Alamat",
+                            style = MaterialTheme.typography.titleSmall.copy(
+                                color = Color(0xFFE5E7EB),
+                                fontWeight = FontWeight.SemiBold
+                            )
+                        )
+                        OutlinedTextField(
+                            value = textAlamat,
+                            onValueChange = { textAlamat = it },
+                            placeholder = { Text("Isikan Alamat") },
+                            modifier = Modifier.fillMaxWidth(),
+                            textStyle = LocalTextStyle.current.copy(color = Color.White), // teks putih
+                            colors = OutlinedTextFieldDefaults.colors(
+                                focusedBorderColor = NeonBlue,
+                                unfocusedBorderColor = Color(0xFF374151),
+                                cursorColor = NeonBlue
+                            )
+                        )
+                    }
                 }
             }
+            
         }
     }
 }
