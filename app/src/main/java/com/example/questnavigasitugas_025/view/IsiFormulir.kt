@@ -160,7 +160,43 @@ fun Formulir(navController: NavController) {
                             }
                         }
                     }
-                    
+                    Column {
+                        Text(
+                            "Status Perkawinan",
+                            style = MaterialTheme.typography.titleSmall.copy(
+                                color = Color(0xFFE5E7EB),
+                                fontWeight = FontWeight.SemiBold
+                            )
+                        )
+                        Column(Modifier.selectableGroup()) {
+                            SP_Option.forEach { text ->
+                                Row(
+                                    Modifier
+                                        .fillMaxWidth()
+                                        .selectable(
+                                            selected = (text == selectedSP),
+                                            onClick = { selectedSP = text },
+                                            role = Role.RadioButton
+                                        )
+                                        .padding(vertical = 4.dp),
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    RadioButton(
+                                        selected = (text == selectedSP),
+                                        onClick = null,
+                                        colors = RadioButtonDefaults.colors(
+                                            selectedColor = NeonBlue
+                                        )
+                                    )
+                                    Text(
+                                        text = text,
+                                        modifier = Modifier.padding(start = 8.dp),
+                                        color = Color(0xFFE5E7EB)
+                                    )
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
