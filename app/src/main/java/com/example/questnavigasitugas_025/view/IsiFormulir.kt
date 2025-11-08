@@ -1,5 +1,6 @@
 package com.example.questnavigasitugas_025.view
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -15,10 +16,13 @@ import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.RadioButton
@@ -220,7 +224,40 @@ fun Formulir(navController: NavController) {
                     }
                 }
             }
-            
+            Spacer(Modifier.height(100.dp)) // ruang untuk tombol bawah
+        }
+
+        Row(
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .fillMaxWidth()
+                .padding(16.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            OutlinedButton(
+                modifier = Modifier.weight(1f),
+                onClick = { navController.navigate("Home") },
+                shape = RoundedCornerShape(12.dp),
+                border = BorderStroke(2.dp, NeonBlue),
+                colors = ButtonDefaults.outlinedButtonColors(
+                    contentColor = NeonBlue
+                )
+            ) {
+                Text("Beranda")
+            }
+
+            Button(
+                modifier = Modifier.weight(1f),
+                onClick = { showDialog = true },
+                shape = RoundedCornerShape(12.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = NeonPurple
+                )
+            ) {
+                Text("Submit")
+            }
         }
     }
+
+    
 }
