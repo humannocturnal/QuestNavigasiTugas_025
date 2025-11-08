@@ -4,7 +4,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -45,6 +47,14 @@ fun Home(navController: NavController){
                 style = MaterialTheme.typography.headlineMedium.copy(
                     color = Color.White,
                     fontWeight = FontWeight.SemiBold
+                )
+            )
+            Spacer(Modifier.height(8.dp))
+
+            Text(
+                text = "Sistem Pendaftaran Peserta",
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    color = Color(0xFF9CA3AF)
                 )
             )
         }
