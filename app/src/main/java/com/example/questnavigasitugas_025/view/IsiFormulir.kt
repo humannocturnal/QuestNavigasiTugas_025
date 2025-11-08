@@ -16,6 +16,7 @@ import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -28,6 +29,7 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -259,5 +261,38 @@ fun Formulir(navController: NavController) {
         }
     }
 
-    
+    if (showDialog) {
+        AlertDialog(
+            onDismissRequest = { showDialog = false },
+            title = { Text(text = "Data Berhasil Disimpan") },
+            text = {
+                Row { Column {
+                    Text("Nama            ")
+                    Text("Jenis Kelamin    ")
+                    Text("Status         ")
+                    Text("Alamat           ")}
+                    Column {
+                        Text(" : $textNama")
+                        Text(" : $selectedJK")
+                        Text(" : $selectedSP")
+                        Text(" : $textAlamat")}
+                }
+            },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        showDialog = false
+                        textNama = ""
+                        textAlamat = ""
+                        selectedJK = JK_Option[0]
+                        selectedSP = SP_Option[0]
+                    }
+                ) { Text("OK") }
+            },
+            shape = RoundedCornerShape(24.dp),
+            containerColor = Color(0xFF0F172A),
+            textContentColor = Color(0xFFE5E7EB),
+            titleContentColor = Color.White
+        )
+    }
 }
